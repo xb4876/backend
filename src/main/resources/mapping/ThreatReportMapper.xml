@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.renwu.backend.demo.mapper.ThreatReportMapper">
+  <resultMap id="BaseResultMap" type="com.renwu.backend.demo.model.ThreatReport">
+    <id column="reportId" jdbcType="VARCHAR" property="reportid" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="cdate" jdbcType="BIGINT" property="cdate" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="date" jdbcType="BIGINT" property="date" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    reportId, author, cdate, content, date, path, source, title
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from threatreport
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from threatreport
+    where reportId = #{reportid,jdbcType=VARCHAR}
+  </delete>
+
+</mapper>
